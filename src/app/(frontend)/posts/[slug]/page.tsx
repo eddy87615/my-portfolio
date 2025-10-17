@@ -26,14 +26,14 @@ export default async function PostPage({ params }: { params: { slug: string } })
   }
 
   return (
-    <article>
+    <article className="post_detail">
       {post.coverImage && typeof post.coverImage === 'object' && post.coverImage.url && (
         <div className="post_detail_cover">
           <Image src={post.coverImage.url} alt={post.coverImage.alt || post.title} fill />
         </div>
       )}
-      <h1>{post.title}</h1>
-      <div>{post.content && <RichText data={post.content} />}</div>
+      <h1 className="post_detail_title">{post.title}</h1>
+      <div className="post_detail_box">{post.content && <RichText data={post.content} />}</div>
     </article>
   )
 }

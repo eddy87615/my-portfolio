@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <>
       <footer>
-        <h1>GOGOGO</h1>
+        <small>&copy; MADE BY KENTA 2025</small>
       </footer>
     </>
   )
