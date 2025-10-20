@@ -5,7 +5,7 @@ export default function Loading() {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        minHeight: '50vh',
+        minHeight: '80vh',
       }}
     >
       <div

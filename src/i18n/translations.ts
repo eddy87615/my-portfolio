@@ -9,7 +9,7 @@ export const translations = {
     },
     posts: {
       title: '文章列表',
-      noPost: '目前沒有文章，請到 Payload 後台新增',
+      noPost: '這邊沒有文章 ; A ;',
       allTags: '全部',
       tags: {
         'zh-version': '中文版',
@@ -19,7 +19,14 @@ export const translations = {
       },
     },
     home: {
-      welcome: '歡迎來到我的網站！',
+      title: '健太的前端之旅',
+      content01: '藝術大學畢業，在日本從設計轉職成為前端工程師；',
+      content02: '想學的東西還有很多，距離想成為的人還很遠。',
+      content03: '下一個目標在哪？我不知道，但是我不會停止挑戰我的極限。',
+    },
+    profile: {
+      zhName: '陳品叡',
+      sedName: 'Eddy Chen',
     },
   },
   jp: {
@@ -32,7 +39,7 @@ export const translations = {
     },
     posts: {
       title: '記事一覧',
-      noPost: '記事がありません。Payload管理画面で追加してください。',
+      noPost: '記事がありません ; A ;',
       allTags: 'すべて',
       tags: {
         'zh-version': '中国語版',
@@ -42,7 +49,15 @@ export const translations = {
       },
     },
     home: {
-      welcome: '健太のサイトへようこそ',
+      title: '健太のフロントエンドの旅',
+
+      content01: '美術大学卒、日本でデザイナーからフロントエンドエンジニアに転職；',
+      content02: '学びたいものまだたくさんあって、なりたい人はまだ先。',
+      content03: '次のゴールはどこにあるのかわからないですけど、これからも自分の限界を挑んでいく。',
+    },
+    profile: {
+      zhName: '陳品叡',
+      sedName: 'チェン　ピンルイ',
     },
   },
 }

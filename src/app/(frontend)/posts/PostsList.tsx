@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { useTranslation } from '@/i18n/useTranslation'
 import { useLanguageStore } from '@/store/languageStore'
 import Loading from '../loading'
+import NoPost from './NoPost'
 
 import './PostList.css'
 
@@ -148,7 +149,7 @@ export default function PostsList() {
         <h1>{t.posts.title}</h1>
         <div className="tag">
           <button
-            className={`tag-button ${selectedTag === 'all' ? 'active' : ''}`}
+            className={`tag_button ${selectedTag === 'all' ? 'active' : ''}`}
             onClick={() => handleTagChange('all')}
           >
             {t.posts.allTags}
@@ -156,7 +157,7 @@ export default function PostsList() {
           {tags?.map((tag) => (
             <button
               key={tag.id}
-              className={`tag-button ${selectedTag === tag.id.toString() ? 'active' : ''}`}
+              className={`tag_button ${selectedTag === tag.id.toString() ? 'active' : ''}`}
               onClick={() => handleTagChange(tag.id.toString())}
             >
               {mounted && language === 'zh' ? tag.nameZh : tag.nameJp}
@@ -174,15 +175,17 @@ export default function PostsList() {
               {posts.map((post) => (
                 <li key={post.id} className="post_link">
                   <Link href={`/posts/${post.slug}`}>
-                    {post.coverImage && typeof post.coverImage === 'object' && post.coverImage.url && (
-                      <div className="post_cover">
-                        <Image
-                          src={post.coverImage.url}
-                          alt={post.coverImage.alt || post.title}
-                          fill
-                        />
-                      </div>
-                    )}
+                    {post.coverImage &&
+                      typeof post.coverImage === 'object' &&
+                      post.coverImage.url && (
+                        <div className="post_cover">
+                          <Image
+                            src={post.coverImage.url}
+                            alt={post.coverImage.alt || post.title}
+                            fill
+                          />
+                        </div>
+                      )}
                     <ul className="post_tags">
                       {post.tags?.map((tag) => (
                         <li key={tag.id}>
@@ -261,7 +264,7 @@ export default function PostsList() {
             )}
           </>
         ) : (
-          <p>NO POST</p>
+          <NoPost />
         )}
       </div>
     </div>

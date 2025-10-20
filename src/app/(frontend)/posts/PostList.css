@@ -13,6 +13,7 @@
     .tag {
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
       gap: 16px;
 
       width: 100vw;
@@ -20,18 +21,25 @@
 
       margin: 0 auto;
 
-      button {
+      .tag_button {
         background-color: transparent;
         border: none;
         border-bottom: 1px solid #333;
 
         cursor: pointer;
 
+        width: fit-content;
+
         &:hover {
           opacity: 0.5;
         }
         &::before {
           content: '#';
+        }
+
+        &.active {
+          border-bottom: 3px solid #333;
+          font-weight: bold;
         }
       }
     }

@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, useEffect } from 'react'
 import { useLanguageStore } from '@/store/languageStore'
 import { translations } from './translations'

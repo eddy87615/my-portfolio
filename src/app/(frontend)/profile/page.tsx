@@ -1,7 +1,9 @@
+import ProfileHeader from './ProfileHeader'
+
 export default function Profile() {
   return (
     <>
-      <h1>EDDY</h1>
+      <ProfileHeader />
     </>
   )
 }

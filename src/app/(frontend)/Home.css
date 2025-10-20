@@ -2,5 +2,28 @@
   margin-top: 80px;
 
   width: 100vw;
-  height: 60vh;
+
+  .home_kv_wrapper {
+    max-width: 1240px;
+
+    margin: 0 auto;
+  }
+
+  .kv_text {
+    position: relative;
+    padding: 8px 16px;
+
+    .kv_text_title {
+      font-size: clamp(20px, 3vw, 40px);
+      font-weight: bold;
+
+      margin: 24px 0;
+    }
+
+    .kv_text_content {
+      margin: 0;
+      line-height: 2;
+      font-size: clamp(12px, 1.5vw, 16px);
+    }
+  }
 }
