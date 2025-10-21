@@ -8,6 +8,7 @@ import './LanguageSelector.css'
 const languages = [
   { code: 'zh', label: '中文', flag: '/images/taiwan.png' },
   { code: 'jp', label: '日本語', flag: '/images/japan.png' },
+  { code: 'eng', label: 'English', flag: '/images/united-states.png' },
 ] as const
 
 export default function LanguageSelector() {
@@ -17,7 +18,7 @@ export default function LanguageSelector() {
 
   const currentLang = languages.find((lang) => lang.code === language)
 
-  const handleSelect = (code: 'zh' | 'jp') => {
+  const handleSelect = (code: 'zh' | 'jp' | 'eng') => {
     setLanguage(code)
     setIsOpen(false)
   }

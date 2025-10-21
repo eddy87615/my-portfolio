@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
-type Language = 'zh' | 'jp'
+type Language = 'zh' | 'jp' | 'eng'
 
 interface LanguageStore {
   language: Language

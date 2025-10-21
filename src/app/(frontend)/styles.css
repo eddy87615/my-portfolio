@@ -1,6 +1,8 @@
 :root {
   --font-mono: 'Roboto Mono', monospace;
-  color: #333;
+  color: #fff;
+
+  line-height: 1.8;
 }
 
 * {
@@ -18,12 +20,13 @@ html,
 body,
 #app {
   height: 100%;
+
+  background-color: #333;
 }
 
 body {
   font-family: system-ui;
   font-size: 18px;
-  line-height: 32px;
 
   margin: 0;
 
@@ -62,6 +65,10 @@ h1 {
   }
 }
 
+h2 {
+  font-size: clamp(40px, 5vw, 56px);
+}
+
 a {
   color: currentColor;
   text-decoration: none;
@@ -79,4 +86,10 @@ a {
 
 svg {
   vertical-align: middle;
+}
+
+.size_wrapper {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
 }

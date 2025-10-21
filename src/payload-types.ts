@@ -201,6 +201,7 @@ export interface Tag {
   slug: string;
   nameZh: string;
   nameJp: string;
+  nameEng: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -331,6 +332,7 @@ export interface TagsSelect<T extends boolean = true> {
   slug?: T;
   nameZh?: T;
   nameJp?: T;
+  nameEng?: T;
   updatedAt?: T;
   createdAt?: T;
 }

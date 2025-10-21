@@ -38,5 +38,11 @@ export const Tags: CollectionConfig = {
       required: true,
       label: '日文名稱',
     },
+    {
+      name: 'nameEng',
+      type: 'text',
+      required: true,
+      label: '英文名稱',
+    },
   ],
 }

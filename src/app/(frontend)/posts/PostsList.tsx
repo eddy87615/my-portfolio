@@ -24,6 +24,7 @@ interface Tag {
   name: string
   nameZh: string
   nameJp: string
+  nameEng: string
 }
 
 interface Post {
@@ -123,6 +124,21 @@ export default function PostsList() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
+  // 根據語言獲取標籤名稱
+  const getTagName = (tag: Tag) => {
+    if (!mounted) return tag.nameZh
+    switch (language) {
+      case 'zh':
+        return tag.nameZh
+      case 'jp':
+        return tag.nameJp
+      case 'eng':
+        return tag.nameEng
+      default:
+        return tag.nameZh
+    }
+  }
+
   // 產生分頁按鈕陣列
   const getPageNumbers = () => {
     const pages = []
@@ -160,7 +176,7 @@ export default function PostsList() {
               className={`tag_button ${selectedTag === tag.id.toString() ? 'active' : ''}`}
               onClick={() => handleTagChange(tag.id.toString())}
             >
-              {mounted && language === 'zh' ? tag.nameZh : tag.nameJp}
+              {getTagName(tag)}
             </button>
           ))}
         </div>
@@ -188,9 +204,7 @@ export default function PostsList() {
                       )}
                     <ul className="post_tags">
                       {post.tags?.map((tag) => (
-                        <li key={tag.id}>
-                          #{mounted && language === 'zh' ? tag.nameZh : tag.nameJp}
-                        </li>
+                        <li key={tag.id}>#{getTagName(tag)}</li>
                       ))}
                     </ul>
                     <h2 className="postLink_title">{post.title}</h2>

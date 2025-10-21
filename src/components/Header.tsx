@@ -6,6 +6,10 @@ import { useTranslation } from '@/i18n/useTranslation'
 import LanguageSelector from './LanguageSelector'
 import './Header.css'
 
+import { FaInstagram } from 'react-icons/fa'
+import { FaGithub } from 'react-icons/fa'
+import { IoMailOutline } from 'react-icons/io5'
+
 export default function Header() {
   const t = useTranslation()
 
@@ -13,11 +17,17 @@ export default function Header() {
     <>
       <header>
         <div className="header_wrapper">
-          <div className="logo">
-            <p>{t.nav.logoTop}</p>
-            <p>{t.nav.logoBottom}</p>
+          <div className="header_snsLink">
+            <Link href="https://github.com/eddy87615" target="_blank">
+              <FaGithub className="sns_icon" />
+            </Link>
+            <Link href="https://www.instagram.com/e.d.c_0615/" target="_blank">
+              <FaInstagram className="sns_icon" />
+            </Link>
+            <Link href="mailto:eddychan615@gmail.com" target="_blank">
+              <IoMailOutline className="sns_icon" />
+            </Link>
           </div>
-          {/* <Image src="/images/logo.svg" width={50} height={50} alt="my logo" /> */}
           <ul className="menu">
             <li>
               <Link href="/">{t.nav.home}</Link>
