@@ -31,6 +31,10 @@ export const translations = {
         '我不是一個優秀的人，但是我不是一個會放棄的人，所以在我所選擇的這條曲折的路上，我會一直摔倒一直受傷，但是我不會停下腳步，我會用更多的精力與時間來磨練出自己平凡的光芒。',
     },
     profile: {
+      title01: '基本資料',
+      title02: '經歷',
+      title03: '學歷',
+      title04: '職涯',
       zhNameTitle: '姓名',
       zhName: '陳品叡',
       sedNameTitle: '英文名',
@@ -75,6 +79,10 @@ export const translations = {
         '私は優秀な人間ではありませんが、諦めない人間です。だから、自分が選んだこの曲がりくねった道で、何度も転んで傷つくでしょう。でも、立ち止まりません。もっと多くの努力と時間をかけて、自分の平凡な輝きを磨いていきます。',
     },
     profile: {
+      title01: '個人情報',
+      title02: '経歴',
+      title03: '学歴',
+      title04: '職歴',
       zhNameTitle: '名前',
       zhName: '陳品叡',
       sedNameTitle: 'フリカナ',
@@ -119,6 +127,10 @@ export const translations = {
         "I'm not an exceptional person, but I'm not someone who gives up. On this winding path I've chosen, I'll keep stumbling and getting hurt, but I won't stop moving forward. I'll put in the extra effort and time to polish my own ordinary brilliance.",
     },
     profile: {
+      title01: 'Basic Information',
+      title02: 'Experience',
+      title03: 'Education',
+      title04: 'Career',
       zhNameTitle: 'Name',
       zhName: 'Pin-Jui Chen',
       sedNameTitle: 'English Name',
