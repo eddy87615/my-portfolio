@@ -15,7 +15,7 @@ export default function HomeAbout() {
           <div className="home_about_info">
             <div className="home_about_img_frame">
               <Image src="/Images/kv-img008.JPG" alt="eddy photo" fill />
-              <span></span>
+              <span className="photo_decoFrame"></span>
             </div>
             <div className="home_about_list">
               <ul>

@@ -1,0 +1,242 @@
+.profile_header {
+  width: 100vw;
+
+  margin-top: 120px;
+
+  padding: 0 24px 80px 24px;
+
+  h1 {
+    text-align: center;
+  }
+
+  .profile_header_wrapper {
+    width: 100%;
+    max-width: 1240px;
+
+    margin: 0 auto;
+
+    gap: 48px;
+
+    .about_info_frame {
+      display: flex;
+      align-items: center;
+
+      gap: 40px;
+
+      margin-bottom: 40px;
+
+      @media screen and (max-width: 768px) {
+        flex-direction: column;
+      }
+
+      .image_frame {
+        position: relative;
+
+        width: 200px;
+        height: 280px;
+
+        flex-shrink: 0;
+
+        pointer-events: none;
+
+        img {
+          object-fit: cover;
+        }
+      }
+
+      .profile_basic_info {
+        color: #fff;
+
+        width: 100%;
+
+        ul {
+          display: flex;
+          flex-direction: column;
+
+          gap: 16px;
+        }
+
+        li {
+          display: flex;
+
+          list-style: none;
+
+          border-bottom: 1px solid #fed700;
+
+          span {
+            &:nth-of-type(1) {
+              width: 200px;
+            }
+          }
+        }
+      }
+
+      .profile_detail_info {
+        margin-top: 40px;
+      }
+    }
+  }
+}
+
+.profile_subTitle {
+  font-size: clamp(24px, 4vw, 30px);
+
+  font-weight: bold;
+
+  color: #333;
+  background-color: #fed700;
+
+  padding: 8px;
+  margin-top: 0;
+}
+.profile_subTitle02 {
+  font-size: clamp(16px, 3vw, 20px);
+
+  border-bottom: 1px solid #fed700;
+}
+
+/* ProfileJobExperience */
+
+.profile_experience {
+  padding-left: 20px;
+  margin-bottom: 40px;
+
+  .profile_experience_companyName {
+    margin: 8px 0;
+
+    position: relative;
+
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    font-size: clamp(16px, 2vw, 18px);
+
+    .profile_experience_period {
+      font-size: clamp(12px, 2vw, 14px);
+      font-weight: bold;
+
+      color: #fed700;
+    }
+
+    &::before {
+      position: absolute;
+
+      content: '';
+
+      width: 10px;
+      height: 10px;
+
+      border-radius: 100px;
+
+      top: 50%;
+      left: -20px;
+
+      transform: translateY(-50%);
+
+      background-color: #fed700;
+    }
+  }
+
+  .profile_experience_jobDescription {
+    padding: 8px 16px;
+
+    border: 1px solid #fed700;
+  }
+
+  .profile_experience_subTitle {
+    margin: 24px 0 8px 0;
+
+    font-size: clamp(14px, 3vw, 16px);
+  }
+
+  .profile_experience_skillTag {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+
+    .profile_experience_Tag {
+      padding: 8px;
+
+      border: 1px solid #fed700;
+    }
+  }
+}
+
+/* ProfileJobExperience */
+
+/* ProfileEducation */
+
+.profile_education_list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .profile_education_item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .period_school {
+      display: flex;
+      width: fit-content;
+      gap: 16px;
+
+      .period {
+        flex-shrink: 0;
+
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    .status {
+      flex-shrink: 0;
+    }
+  }
+}
+/* ProfileEducation */
+
+/* profile_skills_section */
+.profile_skills_section {
+  margin-top: 40px;
+
+  .skills_list {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 16px;
+    .skill_tag {
+      list-style: none;
+
+      padding: 8px 16px;
+    }
+    .level_1 {
+      background-color: #333;
+      border: 1px solid #fff;
+
+      color: #fff;
+    }
+    .level_2 {
+      background-color: #fff4b3;
+
+      color: #333;
+    }
+    .level_3 {
+      background-color: #ffec82;
+
+      color: #333;
+    }
+    .level_4 {
+      background-color: #ffe136;
+
+      color: #333;
+    }
+    .level_5 {
+      background-color: #fed700;
+
+      color: #333;
+    }
+  }
+}
+/* profile_skills_section */

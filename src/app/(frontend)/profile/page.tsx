@@ -1,9 +1,3 @@
-import ProfileHeader from './ProfileHeader'
+import Profile from './Profile'
 
-export default function Profile() {
-  return (
-    <>
-      <ProfileHeader />
-    </>
-  )
-}
+export default Profile

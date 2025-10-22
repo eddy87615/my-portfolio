@@ -71,6 +71,9 @@ export interface Config {
     media: Media;
     posts: Post;
     tags: Tag;
+    'work-experiences': WorkExperience;
+    educations: Education;
+    skills: Skill;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -81,6 +84,9 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
     tags: TagsSelect<false> | TagsSelect<true>;
+    'work-experiences': WorkExperiencesSelect<false> | WorkExperiencesSelect<true>;
+    educations: EducationsSelect<false> | EducationsSelect<true>;
+    skills: SkillsSelect<false> | SkillsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -88,8 +94,12 @@ export interface Config {
   db: {
     defaultIDType: number;
   };
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    'about-me': AboutMe;
+  };
+  globalsSelect: {
+    'about-me': AboutMeSelect<false> | AboutMeSelect<true>;
+  };
   locale: null;
   user: User & {
     collection: 'users';
@@ -207,6 +217,136 @@ export interface Tag {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "work-experiences".
+ */
+export interface WorkExperience {
+  id: number;
+  companyZh: string;
+  companyEng: string;
+  companyJp: string;
+  positionZh: string;
+  positionEng: string;
+  positionJp: string;
+  startDate: string;
+  /**
+   * 如果目前仍在職，請留空
+   */
+  endDate?: string | null;
+  isCurrent?: boolean | null;
+  descriptionZh?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  descriptionEng?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  descriptionJp?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  responsibilities?:
+    | {
+        responsibilityZh: string;
+        responsibilityEng: string;
+        responsibilityJp: string;
+        id?: string | null;
+      }[]
+    | null;
+  achievements?:
+    | {
+        achievementZh: string;
+        achievementEng: string;
+        achievementJp: string;
+        id?: string | null;
+      }[]
+    | null;
+  skills?:
+    | {
+        skill: string;
+        id?: string | null;
+      }[]
+    | null;
+  companyLogo?: (number | null) | Media;
+  /**
+   * 數字越小越靠前顯示
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "educations".
+ */
+export interface Education {
+  id: number;
+  schoolZh: string;
+  schoolEng: string;
+  schoolJp: string;
+  degree: 'phd' | 'master' | 'bachelor' | 'associate' | 'high-school' | 'other';
+  majorZh: string;
+  majorEng: string;
+  majorJp: string;
+  status: 'graduated' | 'incomplete' | 'withdrawn' | 'current';
+  startDate: string;
+  /**
+   * 畢業/肄業/退學日期（如果仍在學請留空）
+   */
+  endDate?: string | null;
+  /**
+   * 數字越小越靠前顯示
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "skills".
+ */
+export interface Skill {
+  id: number;
+  name: string;
+  proficiency: number;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -227,6 +367,18 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'tags';
         value: number | Tag;
+      } | null)
+    | ({
+        relationTo: 'work-experiences';
+        value: number | WorkExperience;
+      } | null)
+    | ({
+        relationTo: 'educations';
+        value: number | Education;
+      } | null)
+    | ({
+        relationTo: 'skills';
+        value: number | Skill;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -338,6 +490,79 @@ export interface TagsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "work-experiences_select".
+ */
+export interface WorkExperiencesSelect<T extends boolean = true> {
+  companyZh?: T;
+  companyEng?: T;
+  companyJp?: T;
+  positionZh?: T;
+  positionEng?: T;
+  positionJp?: T;
+  startDate?: T;
+  endDate?: T;
+  isCurrent?: T;
+  descriptionZh?: T;
+  descriptionEng?: T;
+  descriptionJp?: T;
+  responsibilities?:
+    | T
+    | {
+        responsibilityZh?: T;
+        responsibilityEng?: T;
+        responsibilityJp?: T;
+        id?: T;
+      };
+  achievements?:
+    | T
+    | {
+        achievementZh?: T;
+        achievementEng?: T;
+        achievementJp?: T;
+        id?: T;
+      };
+  skills?:
+    | T
+    | {
+        skill?: T;
+        id?: T;
+      };
+  companyLogo?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "educations_select".
+ */
+export interface EducationsSelect<T extends boolean = true> {
+  schoolZh?: T;
+  schoolEng?: T;
+  schoolJp?: T;
+  degree?: T;
+  majorZh?: T;
+  majorEng?: T;
+  majorJp?: T;
+  status?: T;
+  startDate?: T;
+  endDate?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "skills_select".
+ */
+export interface SkillsSelect<T extends boolean = true> {
+  name?: T;
+  proficiency?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents_select".
  */
 export interface PayloadLockedDocumentsSelect<T extends boolean = true> {
@@ -367,6 +592,72 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about-me".
+ */
+export interface AboutMe {
+  id: number;
+  zhContent: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  engContent: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  jpContent: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about-me_select".
+ */
+export interface AboutMeSelect<T extends boolean = true> {
+  zhContent?: T;
+  engContent?: T;
+  jpContent?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

@@ -37,8 +37,6 @@ header {
       list-style: none;
 
       color: #fff;
-
-      font-size: clamp(12px, 3vw, 14px);
     }
   }
 
