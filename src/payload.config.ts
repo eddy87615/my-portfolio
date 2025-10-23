@@ -36,10 +36,6 @@ export default buildConfig({
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URI || '',
-      ssl: { rejectUnauthorized: false }, // 添加 SSL 配置
-      max: 10, // 限制連線數
-      idleTimeoutMillis: 30000,
-      connectionTimeoutMillis: 10000,
     },
   }),
   sharp,

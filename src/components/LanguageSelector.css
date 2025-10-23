@@ -20,7 +20,7 @@
   transition: all 0.2s ease;
 
   span {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 500;
   }
 
@@ -76,7 +76,7 @@
     }
 
     span {
-      font-size: 14px;
+      font-size: 12px;
     }
   }
 }
