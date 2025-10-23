@@ -3,21 +3,19 @@
 import Image from 'next/image'
 import { useTranslation } from '@/i18n/useTranslation'
 import { useLanguageStore } from '@/store/languageStore'
-import type { WorkExperience, Education, Skill } from '@/payload-types'
+import type { Skill, PersonalInfo } from '@/payload-types'
 
 import './ProfileContent.css'
-import ProfileJobExperience from './ProfileJobExperience'
-import ProfileEducation from './ProfileEducation'
 import ProfileSkills from './ProfileSkills'
 
 interface ProfileContentProps {
-  workExperiences: WorkExperience[]
-  educations: Education[]
   skills: Skill[]
+  personalInfo: PersonalInfo
 }
 
-export default function ProfileContent({ workExperiences, educations, skills }: ProfileContentProps) {
+export default function ProfileContent({ skills, personalInfo }: ProfileContentProps) {
   const t = useTranslation()
+  const language = useLanguageStore((state) => state.language)
 
   return (
     <div className="profile_header">
@@ -29,31 +27,55 @@ export default function ProfileContent({ workExperiences, educations, skills }: 
             <span className="photo_decoFrame"></span>
           </div>
           <div className="profile_basic_info">
-            <h2 className="profile_subTitle">{t.profile.title01}</h2>
             <ul>
               <li>
                 <span>{t.profile.zhNameTitle}</span>
-                <span>{t.profile.zhName}</span>
-              </li>
-              <li>
-                <span>{t.profile.sedNameTitle}</span>
-                <span>{t.profile.sedName}</span>
+                <span>
+                  {language === 'zh'
+                    ? personalInfo.nameZh
+                    : language === 'jp'
+                      ? personalInfo.nameJp
+                      : personalInfo.nameEng}
+                </span>
               </li>
               <li>
                 <span>{t.profile.birthdayTitle}</span>
-                <span>{t.profile.birthday}</span>
+                <span>
+                  {language === 'zh'
+                    ? personalInfo.birthdayZh
+                    : language === 'jp'
+                      ? personalInfo.birthdayJp
+                      : personalInfo.birthdayEng}
+                </span>
               </li>
               <li>
                 <span>{t.profile.nationalityTitle}</span>
-                <span>{t.profile.nationality}</span>
+                <span>
+                  {language === 'zh'
+                    ? personalInfo.nationalityZh
+                    : language === 'jp'
+                      ? personalInfo.nationalityJp
+                      : personalInfo.nationalityEng}
+                </span>
+              </li>
+              <li>
+                <span>{t.profile.emailTitle}</span>
+                <span>{personalInfo.email}</span>
+              </li>
+              <li>
+                <span>{t.profile.locationTitle}</span>
+                <span>
+                  {language === 'zh'
+                    ? personalInfo.locationZh
+                    : language === 'jp'
+                      ? personalInfo.locationJp
+                      : personalInfo.locationEng}
+                </span>
               </li>
             </ul>
           </div>
         </div>
         <div className="profile_detail_info">
-          <h2 className="profile_subTitle">{t.profile.title02}</h2>
-          <ProfileJobExperience workExperiences={workExperiences} />
-          <ProfileEducation educations={educations} />
           <ProfileSkills skills={skills} />
         </div>
       </div>

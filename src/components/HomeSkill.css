@@ -1,0 +1,53 @@
+.home_skill_section {
+  width: 100vw;
+  height: 100%;
+
+  background-color: #222222;
+
+  padding: 80px 24px;
+
+  .home_about_skill_section {
+    .home_about_skill_list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+      gap: 40px;
+
+      .home_about_skill_item {
+        list-style: none;
+
+        .home_skill_name {
+          font-size: 14px;
+
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+
+          margin-bottom: 8px;
+        }
+
+        .home_skill_progress_bar {
+          width: 100%;
+          height: 4px;
+
+          background-color: #333;
+
+          border-radius: 100px;
+          overflow: hidden;
+
+          margin-bottom: 8px;
+
+          .home_skill_progress_fill {
+            height: 100%;
+            background-color: #fed700;
+          }
+        }
+
+        .home_skill_description {
+          font-size: 12px;
+
+          color: #979797;
+        }
+      }
+    }
+  }
+}
