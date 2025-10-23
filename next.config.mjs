@@ -15,6 +15,10 @@ const nextConfig = {
         port: '3000',
         pathname: '/media/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'my-portfolio-bay-chi-24.vercel.app',
+      },
     ],
   },
   webpack: (webpackConfig) => {
