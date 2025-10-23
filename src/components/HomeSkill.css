@@ -9,8 +9,13 @@
   .home_about_skill_section {
     .home_about_skill_list {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+      grid-template-columns: 1fr 1fr;
       gap: 40px;
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
 
       .home_about_skill_item {
         list-style: none;
@@ -23,6 +28,8 @@
           justify-content: space-between;
 
           margin-bottom: 8px;
+
+          font-weight: bold;
         }
 
         .home_skill_progress_bar {

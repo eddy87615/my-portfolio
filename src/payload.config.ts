@@ -15,6 +15,7 @@ import { Tags } from './collections/Tags'
 import { AboutMe } from './collections/AboutMe'
 import { Skills } from './collections/Skills'
 import { PersonalInfo } from './collections/PersonalInfo'
+import { poolConfig } from './lib/db'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -34,9 +35,7 @@ export default buildConfig({
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
   db: postgresAdapter({
-    pool: {
-      connectionString: process.env.DATABASE_URI || '',
-    },
+    pool: poolConfig,
   }),
   sharp,
   plugins: [

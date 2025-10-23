@@ -1,6 +1,6 @@
 .postList_wrapper {
-  margin-top: 80px;
-
+  height: 100%;
+  min-height: 100vh;
   h1 {
     text-align: center;
   }
@@ -9,6 +9,10 @@
     height: 100%;
 
     padding: 16px;
+
+    .post_title {
+      margin: 80px 0;
+    }
 
     .tag {
       display: flex;
@@ -51,7 +55,7 @@
     width: 100%;
     max-width: 1240px;
 
-    margin: 0 auto;
+    margin: 40px auto;
 
     .post_cover {
       position: relative;

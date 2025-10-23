@@ -145,7 +145,7 @@ export default function PostsList() {
     const maxVisible = 5 // 最多顯示 5 個按鈕
 
     let startPage = Math.max(1, currentPage - 2)
-    let endPage = Math.min(pagination.totalPages, startPage + maxVisible - 1)
+    const endPage = Math.min(pagination.totalPages, startPage + maxVisible - 1)
 
     // 調整 startPage，確保顯示足夠的按鈕
     if (endPage - startPage < maxVisible - 1) {
@@ -162,7 +162,7 @@ export default function PostsList() {
   return (
     <div className="postList_wrapper">
       <div className="postList_top">
-        <h1>{t.posts.title}</h1>
+        <h1 className="post_title">{t.posts.title}</h1>
         <div className="tag">
           <button
             className={`tag_button ${selectedTag === 'all' ? 'active' : ''}`}

@@ -13,7 +13,7 @@
     grid-template-columns: 0.8fr 1fr;
     gap: 80px;
 
-    margin: 56px 0;
+    margin: 40px 0;
 
     @media screen and (max-width: 768px) {
       grid-template-columns: 1fr;
@@ -28,6 +28,8 @@
 
       @media (max-width: 768px) {
         height: 500px;
+
+        margin-bottom: 40px;
       }
 
       img {
@@ -70,5 +72,5 @@
   font-size: clamp(24px, 5vw, 26px);
   font-weight: bold;
 
-  margin-bottom: 24px;
+  margin-bottom: 40px;
 }

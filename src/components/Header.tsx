@@ -32,9 +32,9 @@ export default function Header() {
             <li>
               <Link href="/">{t.nav.home}</Link>
             </li>
-            <li>
+            {/* <li>
               <Link href="/profile">{t.nav.profile}</Link>
-            </li>
+            </li> */}
             <li>
               <Link href="/posts">{t.nav.posts}</Link>
             </li>
