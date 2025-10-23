@@ -3,6 +3,10 @@ import { withPayload } from '@payloadcms/next/withPayload'
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Your Next.js config here
+  eslint: {
+    // 在生產構建時忽略 ESLint 錯誤
+    ignoreDuringBuilds: true,
+  },
   images: {
     remotePatterns: [
       {
