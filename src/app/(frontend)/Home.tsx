@@ -20,7 +20,7 @@ const HomeHeader = function () {
   return (
     <div className="top_kv">
       <div className="kv_wrapper">
-        <Image src="/Images/kv-img001.webp" fill alt="kv picture of eddy" />
+        <Image src="/images/kv-img001.webp" fill alt="kv picture of eddy" />
         <div className="kv_text">
           <h1>{t.home.title}</h1>
           <p>{t.home.content01}</p>
