@@ -41,21 +41,25 @@ export default buildConfig({
   sharp,
   plugins: [
     payloadCloudPlugin(),
-    s3Storage({
-      collections: {
-        media: true,
-      },
-      bucket: process.env.SUPABASE_BUCKET || 'media',
-      config: {
-        credentials: {
-          accessKeyId: process.env.SUPABASE_ACCESS_KEY_ID || '',
-          secretAccessKey: process.env.SUPABASE_SECRET_ACCESS_KEY || '',
-        },
-        region: process.env.SUPABASE_REGION || 'us-east-1',
-        endpoint: process.env.SUPABASE_ENDPOINT || '',
-        forcePathStyle: true,
-      },
-    }),
+    ...(process.env.SUPABASE_ACCESS_KEY_ID && process.env.SUPABASE_SECRET_ACCESS_KEY
+      ? [
+          s3Storage({
+            collections: {
+              media: true,
+            },
+            bucket: process.env.SUPABASE_BUCKET || 'media',
+            config: {
+              credentials: {
+                accessKeyId: process.env.SUPABASE_ACCESS_KEY_ID,
+                secretAccessKey: process.env.SUPABASE_SECRET_ACCESS_KEY,
+              },
+              region: process.env.SUPABASE_REGION || 'us-east-2',
+              endpoint: process.env.SUPABASE_ENDPOINT,
+              forcePathStyle: true,
+            },
+          }),
+        ]
+      : []),
     // storage-adapter-placeholder
   ],
 })
