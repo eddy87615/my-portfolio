@@ -67,13 +67,26 @@ export async function performTransaction() {
 
 ## 連線池設定
 
-目前的連線池設定位於 `src/lib/db.ts:4-6`：
+目前的連線池設定位於 `src/lib/db.ts:5-13`，針對 Serverless 環境優化：
 
-- 使用最簡單的設定（僅 `connectionString`）
-- 適用於 Supabase pooler 連線
-- 讓 PostgreSQL 驅動使用預設的連線池參數
+- `max: 1` - 每個實例只使用一個連線（適合 Vercel Serverless）
+- `idleTimeoutMillis: 20000` - 20 秒閒置後釋放連線
+- `allowExitOnIdle: true` - 允許在沒有活動連線時退出
 
-這個簡單設定已經過測試，可以正常連線到 Supabase。
+### 為什麼這樣設定？
+
+1. **Serverless 環境特性**
+   - Vercel 的每個請求可能在不同的函數實例中執行
+   - 每個實例建立自己的連線池
+   - 使用 `max: 1` 避免耗盡 Supabase 的連線限制
+
+2. **Supabase Pooler 限制**
+   - 免費方案有並發連線數限制
+   - 使用較短的 `idleTimeoutMillis` 確保連線及時釋放
+
+3. **自動清理**
+   - `allowExitOnIdle: true` 讓閒置的 pool 自動關閉
+   - 避免佔用不必要的資源
 
 ## 環境變數
 
