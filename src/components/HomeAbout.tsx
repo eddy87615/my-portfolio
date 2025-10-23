@@ -29,7 +29,7 @@ export default function HomeAbout({ personalInfo }: HomeAboutProps) {
         <div className="size_wrapper">
           <div className="home_about_info">
             <div className="home_about_img_frame">
-              <Image src="/Images/kv-img005.jpg" alt="eddy photo" fill />
+              <Image src="/images/kv-img005.jpg" alt="eddy photo" fill />
               <span className="photo_decoFrame"></span>
             </div>
             <div className="home_about_list">
