@@ -6,7 +6,8 @@ import Image from 'next/image'
 
 import './page.css'
 
-export default async function PostPage({ params }: { params: { slug: string } }) {
+export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
 
@@ -14,7 +15,7 @@ export default async function PostPage({ params }: { params: { slug: string } })
     collection: 'posts',
     where: {
       slug: {
-        equals: params.slug,
+        equals: slug,
       },
     },
   })
