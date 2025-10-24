@@ -5,6 +5,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useTranslation } from '@/i18n/useTranslation'
 import { useLanguageStore } from '@/store/languageStore'
+import { getAllPosts, getAllTags } from '@/lib/sanity.queries'
+import { urlFor } from '@/lib/sanity.client'
 import Loading from '../loading'
 import NoPost from './NoPost'
 
@@ -19,8 +21,8 @@ interface Media {
 }
 
 interface Tag {
-  id: string | number
-  slug: string
+  _id: string
+  slug: { current: string }
   name: string
   nameZh: string
   nameJp: string
@@ -28,11 +30,12 @@ interface Tag {
 }
 
 interface Post {
-  id: string | number
+  _id: string
   title: string
-  slug: string
-  coverImage?: Media | string | number
+  slug: { current: string }
+  coverImage?: any
   tags?: Tag[]
+  publishedAt: string
 }
 
 interface PaginationInfo {
@@ -71,36 +74,45 @@ export default function PostsList() {
   // 獲取所有標籤
   useEffect(() => {
     async function fetchTags() {
-      const res = await fetch('/api/tags?limit=10')
-      const data = await res.json()
-      setTags(data.docs || [])
+      try {
+        const data = await getAllTags()
+        setTags(data || [])
+      } catch (error) {
+        console.error('Failed to fetch tags:', error)
+      }
     }
     fetchTags()
   }, [])
 
-  // 獲取文章（加入分頁參數）
+  // 獲取文章（客戶端篩選和分頁）
   useEffect(() => {
     async function fetchPosts() {
       setLoading(true)
       try {
-        const limit = 12
-        let url = `/api/posts?limit=${limit}&page=${currentPage}&depth=2`
+        const allPosts = await getAllPosts()
 
+        // 根據標籤篩選
+        let filteredPosts = allPosts || []
         if (selectedTag !== 'all') {
-          url += `&where[tags][contains]=${selectedTag}`
+          filteredPosts = filteredPosts.filter((post: Post) =>
+            post.tags?.some((tag) => tag._id === selectedTag)
+          )
         }
 
-        const res = await fetch(url)
-        const data = await res.json()
+        // 客戶端分頁
+        const limit = 12
+        const startIndex = (currentPage - 1) * limit
+        const endIndex = startIndex + limit
+        const paginatedPosts = filteredPosts.slice(startIndex, endIndex)
 
-        setPosts(data.docs || [])
+        setPosts(paginatedPosts)
         setPagination({
-          totalDocs: data.totalDocs,
-          limit: data.limit,
-          totalPages: data.totalPages,
-          page: data.page,
-          hasNextPage: data.hasNextPage,
-          hasPrevPage: data.hasPrevPage,
+          totalDocs: filteredPosts.length,
+          limit: limit,
+          totalPages: Math.ceil(filteredPosts.length / limit),
+          page: currentPage,
+          hasNextPage: endIndex < filteredPosts.length,
+          hasPrevPage: currentPage > 1,
         })
       } catch (error) {
         console.error('Failed to fetch posts:', error)
@@ -172,9 +184,9 @@ export default function PostsList() {
           </button>
           {tags?.map((tag) => (
             <button
-              key={tag.id}
-              className={`tag_button ${selectedTag === tag.id.toString() ? 'active' : ''}`}
-              onClick={() => handleTagChange(tag.id.toString())}
+              key={tag._id}
+              className={`tag_button ${selectedTag === tag._id ? 'active' : ''}`}
+              onClick={() => handleTagChange(tag._id)}
             >
               {getTagName(tag)}
             </button>
@@ -189,22 +201,20 @@ export default function PostsList() {
           <>
             <ul className="all_posts">
               {posts.map((post) => (
-                <li key={post.id} className="post_link">
-                  <Link href={`/posts/${post.slug}`}>
-                    {post.coverImage &&
-                      typeof post.coverImage === 'object' &&
-                      post.coverImage.url && (
-                        <div className="post_cover">
-                          <Image
-                            src={post.coverImage.url}
-                            alt={post.coverImage.alt || post.title}
-                            fill
-                          />
-                        </div>
-                      )}
+                <li key={post._id} className="post_link">
+                  <Link href={`/posts/${post.slug.current}`}>
+                    {post.coverImage && (
+                      <div className="post_cover">
+                        <Image
+                          src={urlFor(post.coverImage).url()}
+                          alt={post.coverImage.alt || post.title}
+                          fill
+                        />
+                      </div>
+                    )}
                     <ul className="post_tags">
                       {post.tags?.map((tag) => (
-                        <li key={tag.id}>#{getTagName(tag)}</li>
+                        <li key={tag._id}>#{getTagName(tag)}</li>
                       ))}
                     </ul>
                     <h2 className="postLink_title">{post.title}</h2>

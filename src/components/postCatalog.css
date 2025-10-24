@@ -1,0 +1,36 @@
+.postCatalog {
+  background-color: #1c1c1c;
+  border-radius: 8px;
+  padding: 16px 24px;
+
+  color: #fff;
+}
+
+.postCatalog-title {
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+
+.postCatalog ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.catalogH2 > a {
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s;
+  text-decoration: none;
+}
+
+.catalogH3 {
+  list-style: none;
+  padding-left: 1.5rem;
+}
+
+.catalogH3 a {
+  cursor: pointer;
+  transition: color 0.2s;
+  text-decoration: none;
+  font-size: 0.9375rem;
+}

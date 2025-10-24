@@ -1,15 +1,18 @@
 import { Pool, PoolConfig } from 'pg'
 
 // 統一的資料庫連線設定
-// 針對 Serverless 環境（Vercel）和 Supabase Pooler 優化
+// 根據環境自動調整連線池大小
+const isProduction = process.env.NODE_ENV === 'production'
+const isVercel = process.env.VERCEL === '1'
+
 export const poolConfig: PoolConfig = {
   connectionString: process.env.DATABASE_URI,
-  // Serverless 環境建議使用單一連線
-  max: 1,
+  // 開發環境使用較多連線以提升速度，生產環境（Vercel）使用較少連線
+  max: isVercel ? 1 : 10,
   // 較短的閒置時間，避免佔用連線
-  idleTimeoutMillis: 20000,
-  // 允許在閒置時關閉，適合 Serverless
-  allowExitOnIdle: true,
+  idleTimeoutMillis: isVercel ? 20000 : 30000,
+  // Serverless 環境允許在閒置時關閉
+  allowExitOnIdle: isVercel,
 }
 
 // 統一的資料庫連線 pool（用於直接使用 pg 的情況）

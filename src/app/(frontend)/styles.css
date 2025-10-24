@@ -30,7 +30,7 @@ body {
 
   margin: 0;
 
-  line-height: 1.5;
+  line-height: 2;
 
   @media (max-width: 1024px) {
     font-size: 15px;
@@ -131,12 +131,12 @@ p,
 li,
 a {
   margin: 0;
-  font-size: 14px;
+  font-size: 15px;
 
   letter-spacing: 1px;
 
   @media (max-width: 1024px) {
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 
@@ -170,4 +170,14 @@ svg {
   border: 2px solid #fed700;
 
   margin: -12px;
+}
+
+code {
+  background-color: rgb(240, 240, 240);
+
+  color: rgb(197, 86, 86);
+
+  padding: 2px;
+
+  border-radius: 4px;
 }

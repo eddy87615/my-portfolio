@@ -1,8 +1,17 @@
 import { useTranslation } from '@/i18n/useTranslation'
 import { useLanguageStore } from '@/store/languageStore'
-import type { Skill } from '@/payload-types'
 
 import './HomeSkill.css'
+
+interface Skill {
+  _id: string
+  name: string
+  descriptionZh?: string
+  descriptionEng?: string
+  descriptionJp?: string
+  proficiency: number
+  order: number
+}
 
 interface HomeSkillProps {
   skills: Skill[]
@@ -28,7 +37,7 @@ export default function HomeSkill({ skills }: HomeSkillProps) {
           <div className="home_about_skill_section">
             <ul className="home_about_skill_list">
               {skills.map((skill) => (
-                <li key={skill.id} className="home_about_skill_item">
+                <li key={skill._id} className="home_about_skill_item">
                   <div>
                     <p className="home_skill_name">
                       <span>{skill.name}</span>

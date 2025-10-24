@@ -19,6 +19,11 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'my-portfolio-bay-chi-24.vercel.app',
       },
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+        pathname: '/images/**',
+      },
     ],
   },
   webpack: (webpackConfig) => {

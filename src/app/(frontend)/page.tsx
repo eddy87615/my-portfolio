@@ -1,26 +1,13 @@
-import { headers as getHeaders } from 'next/headers.js'
-import { getPayload } from 'payload'
-import config from '@/payload.config'
+import { getPersonalInfo, getAllSkills } from '@/lib/sanity.queries'
 import HomeContent from './Home'
 import './styles.css'
 
 export default async function HomePage() {
-  const headers = await getHeaders()
-  const payloadConfig = await config
-  const payload = await getPayload({ config: payloadConfig })
-  const { user } = await payload.auth({ headers })
-
   // 獲取個人資料
-  const personalInfo = await payload.findGlobal({
-    slug: 'personal-info',
-  })
+  const personalInfo = await getPersonalInfo()
 
-  // 獲取技能（全部，不分頁）
-  const skills = await payload.find({
-    collection: 'skills',
-    sort: 'order',
-    limit: 1000,
-  })
+  // 獲取技能（全部，按順序排列）
+  const skills = await getAllSkills()
 
-  return <HomeContent isAuthenticated={!!user} personalInfo={personalInfo} skills={skills.docs} />
+  return <HomeContent isAuthenticated={false} personalInfo={personalInfo} skills={skills || []} />
 }

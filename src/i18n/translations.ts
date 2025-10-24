@@ -4,7 +4,6 @@ export const translations = {
       logoTop: "Eddy's Warehouse",
       logoBottom: '我的各種東西',
       home: '首頁',
-      profile: '關於我',
       posts: '文章分享',
     },
     posts: {
@@ -44,7 +43,6 @@ export const translations = {
       logoTop: "Eddy's Warehouse",
       logoBottom: '私の色々なもの',
       home: 'ホーム',
-      profile: 'プロフィール',
       posts: '記事',
     },
     posts: {
@@ -85,7 +83,6 @@ export const translations = {
       logoTop: "Eddy's Warehouse",
       logoBottom: 'Me and my stuffs',
       home: 'Home',
-      profile: 'About Me',
       posts: 'My Posts',
     },
     posts: {

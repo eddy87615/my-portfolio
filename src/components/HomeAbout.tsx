@@ -1,19 +1,60 @@
 import { useTranslation } from '@/i18n/useTranslation'
 import { useLanguageStore } from '@/store/languageStore'
 import Image from 'next/image'
-import { RichText } from '@payloadcms/richtext-lexical/react'
-import Link from 'next/link'
-import type { PersonalInfo } from '@/payload-types'
+import PortableText from '@/components/PortableText'
 
 import './HomeAbout.css'
 
+interface PersonalInfo {
+  _id: string
+  nameZh?: string
+  nameEng?: string
+  nameJp?: string
+  birthdayZh?: string
+  birthdayEng?: string
+  birthdayJp?: string
+  nationalityZh?: string
+  nationalityEng?: string
+  nationalityJp?: string
+  email?: string
+  locationZh?: string
+  locationEng?: string
+  locationJp?: string
+  zhContent?: any
+  engContent?: any
+  jpContent?: any
+}
+
 interface HomeAboutProps {
-  personalInfo: PersonalInfo
+  personalInfo: PersonalInfo | null
 }
 
 export default function HomeAbout({ personalInfo }: HomeAboutProps) {
   const language = useLanguageStore((state) => state.language)
   const t = useTranslation()
+
+  // 如果沒有 personalInfo 資料，顯示提示訊息
+  if (!personalInfo) {
+    return (
+      <div className="home_about">
+        <div className="size_wrapper">
+          <div className="home_about_info">
+            <div className="home_about_img_frame">
+              <Image src="/images/kv-img005.jpg" alt="eddy photo" fill />
+              <span className="photo_decoFrame"></span>
+            </div>
+            <div className="home_about_list">
+              <p className="home_about_title">{t.home.titleAboutMe}</p>
+              <p className="home_about_subtitle">{t.home.titleAboutMeInfo}</p>
+              <div className="home_about_content">
+                <p>請先在 Sanity Studio 中建立 Personal Info 資料</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   // 根據語言選擇對應的內容
   const content =
@@ -36,7 +77,7 @@ export default function HomeAbout({ personalInfo }: HomeAboutProps) {
               <p className="home_about_title">{t.home.titleAboutMe}</p>
               <p className="home_about_subtitle">{t.home.titleAboutMeInfo}</p>
               <div className="home_about_content">
-                <RichText data={content} />
+                {content && <PortableText value={content} />}
               </div>
             </div>
           </div>
