@@ -6,10 +6,6 @@
 
   padding: 80px 24px;
 
-  position: sticky;
-  top: 0;
-  z-index: 1;
-
   .home_about_skill_section {
     .home_about_skill_list {
       display: grid;
