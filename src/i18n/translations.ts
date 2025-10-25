@@ -21,7 +21,7 @@ export const translations = {
     home: {
       title: '嗨！',
       content01: '我是健太。',
-      content02: '歡迎來到我的小倉庫！',
+      content02: '我是前端工程師。',
       titleAboutMe: '我是誰？',
       titleAboutMeInfo: '我是陳品叡，來自台灣，目前定居日本的菜鳥前端工程師。',
       titleAboutSkill01: '我會些什麼？',
@@ -60,8 +60,8 @@ export const translations = {
     home: {
       title: '初めまして！',
       content01: '健太です。',
-      content02: '私の子倉庫へようこそ！',
-      titleAboutMe: '私って誰？',
+      content02: '私はフロントエンドエンジニアです。',
+      titleAboutMe: '誰か？',
       titleAboutMeInfo:
         '私はチェンピンルイです。台湾出身で、今日本に住んでいる素人のフロントエンドエンジニアです。',
       titleAboutSkill01: '私は何ができますか？',
@@ -100,7 +100,7 @@ export const translations = {
     home: {
       title: 'Hi there!',
       content01: 'I am Eddy.',
-      content02: 'Welcome to my little Warehouse.',
+      content02: 'I am a front-end engineer.',
       titleAboutMe: 'Who am I?',
       titleAboutMeInfo: 'I am PINJUI CHEN, a newb front-end engineer from Taiwan.',
       titleAboutSkill01: 'What can I do?',

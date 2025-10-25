@@ -1,7 +1,6 @@
 'use client'
 
 import { useTranslation } from '@/i18n/useTranslation'
-import Image from 'next/image'
 
 import './Home.css'
 import HomeAbout from '@/components/HomeAbout'
@@ -48,10 +47,9 @@ const HomeHeader = function () {
   return (
     <div className="top_kv">
       <div className="kv_wrapper">
-        <Image src="/images/kv-img001.webp" fill alt="kv picture of eddy" />
         <div className="kv_text">
-          <h1>{t.home.title}</h1>
-          <p>{t.home.content01}</p>
+          <p className="kv_title_hi">{t.home.title}</p>
+          <p className="kv_title_name">{t.home.content01}</p>
           <p>{t.home.content02}</p>
         </div>
       </div>
@@ -59,7 +57,7 @@ const HomeHeader = function () {
   )
 }
 
-export default function HomeContent({ isAuthenticated, personalInfo, skills }: HomeContentProps) {
+export default function HomeContent({ personalInfo, skills }: HomeContentProps) {
   return (
     <div className="home">
       <HomeHeader />
