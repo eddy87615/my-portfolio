@@ -36,58 +36,65 @@
         pointer-events: none;
       }
 
-      .kv_text {
+      /* 手機版：取消 fixed，使用正常背景 */
+      @media screen and (max-width: 768px) {
+        background-attachment: scroll;
+        background-size: cover;
+        background-position: center center;
+      }
+    }
+
+    .kv_text {
+      position: relative;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+
+      width: 100%;
+      max-width: 1240px;
+
+      margin: 0 auto;
+      padding-left: 48px;
+      bottom: 30%;
+
+      line-height: 1;
+
+      /* border-left: #fed700 16px solid; */
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 24px;
+        height: 100%;
+
+        background-color: #fed700;
+        left: 24px;
+
+        @media screen and (max-width: 768px) {
+          width: 12px;
+        }
+      }
+
+      .kv_title_hi {
         position: relative;
-        color: #fff;
-        display: flex;
-        flex-direction: column;
 
-        width: 100%;
-        max-width: 1240px;
+        margin: 8px;
 
-        margin: 0 auto;
-        padding-left: 48px;
-        bottom: 30%;
+        font-size: clamp(30px, 6vw, 80px);
+        font-weight: bold;
 
-        line-height: 1;
+        color: #fed700;
+      }
+      p {
+        position: relative;
 
-        /* border-left: #fed700 16px solid; */
+        margin: 8px;
 
-        &::before {
-          content: '';
-          position: absolute;
-          width: 24px;
-          height: 100%;
-
-          background-color: #fed700;
-          left: 24px;
-
-          @media screen and (max-width: 768px) {
-            width: 12px;
-          }
+        &:nth-of-type(2) {
+          font-size: clamp(28px, 6vw, 72px);
         }
-
-        .kv_title_hi {
-          position: relative;
-
-          margin: 8px;
-
-          font-size: clamp(30px, 6vw, 80px);
-          font-weight: bold;
-
-          color: #fed700;
-        }
-        p {
-          position: relative;
-
-          margin: 8px;
-
-          &:nth-of-type(2) {
-            font-size: clamp(28px, 6vw, 72px);
-          }
-          &:nth-of-type(3) {
-            font-size: clamp(20px, 4vw, 24px);
-          }
+        &:nth-of-type(3) {
+          font-size: clamp(20px, 4vw, 24px);
         }
       }
     }
