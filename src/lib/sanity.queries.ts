@@ -27,6 +27,33 @@ export async function getAllPosts() {
   }
 }
 
+// 取得包含特定標籤的文章
+export async function getPostsByTag(tagSlug: string) {
+  try {
+    return await client.fetch(
+      groq`*[_type == "post" && $tagSlug in tags[]->slug.current] | order(publishedAt desc) {
+        _id,
+        title,
+        slug,
+        coverImage,
+        publishedAt,
+        "tags": tags[]-> {
+          _id,
+          name,
+          slug,
+          nameZh,
+          nameEng,
+          nameJp
+        }
+      }`,
+      { tagSlug },
+    )
+  } catch (error) {
+    console.error('Error fetching posts by tag:', error)
+    return []
+  }
+}
+
 export async function getPostBySlug(slug: string) {
   try {
     return await client.fetch(

@@ -34,6 +34,8 @@
 
       img {
         object-fit: cover;
+
+        filter: saturate(0.5);
       }
     }
 
@@ -71,6 +73,7 @@
 .home_about_subtitle {
   font-size: clamp(24px, 5vw, 26px);
   font-weight: bold;
+  line-height: 1.5;
 
   margin-bottom: 40px;
 }

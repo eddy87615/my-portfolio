@@ -5,6 +5,7 @@ import { useTranslation } from '@/i18n/useTranslation'
 import './Home.css'
 import HomeAbout from '@/components/HomeAbout'
 import HomeSkill from '@/components/HomeSkill'
+import HomeWorks from '@/components/HomeWorks'
 
 interface PersonalInfo {
   _id: string
@@ -62,6 +63,7 @@ export default function HomeContent({ personalInfo, skills }: HomeContentProps) 
     <div className="home">
       <HomeHeader />
       <HomeAbout personalInfo={personalInfo} />
+      <HomeWorks />
       <HomeSkill skills={skills} />
     </div>
   )
