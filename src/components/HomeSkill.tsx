@@ -1,3 +1,8 @@
+'use client'
+import { motion } from 'framer-motion'
+import { useInView } from 'framer-motion'
+import { useRef } from 'react'
+
 import { useTranslation } from '@/i18n/useTranslation'
 import { useLanguageStore } from '@/store/languageStore'
 
@@ -20,6 +25,8 @@ interface HomeSkillProps {
 export default function HomeSkill({ skills }: HomeSkillProps) {
   const language = useLanguageStore((state) => state.language)
   const t = useTranslation()
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
 
   // 根據語言獲取技術描述
   const getDescription = (skill: Skill) => {
@@ -30,7 +37,13 @@ export default function HomeSkill({ skills }: HomeSkillProps) {
 
   return (
     <>
-      <div className="home_skill_section">
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, y: 50 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+        className="home_skill_section"
+      >
         <div className="size_wrapper">
           <p className="home_about_title">{t.home.titleAboutSkill01}</p>
           <p className="home_about_subtitle">{t.home.titleAboutSkill02}</p>
@@ -56,7 +69,7 @@ export default function HomeSkill({ skills }: HomeSkillProps) {
             </ul>
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   )
 }

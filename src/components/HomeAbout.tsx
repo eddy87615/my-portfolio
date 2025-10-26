@@ -1,3 +1,8 @@
+'use client'
+import { motion } from 'framer-motion'
+import { useInView } from 'framer-motion'
+import { useRef } from 'react'
+
 import { useTranslation } from '@/i18n/useTranslation'
 import { useLanguageStore } from '@/store/languageStore'
 import Image from 'next/image'
@@ -32,6 +37,8 @@ interface HomeAboutProps {
 export default function HomeAbout({ personalInfo }: HomeAboutProps) {
   const language = useLanguageStore((state) => state.language)
   const t = useTranslation()
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
 
   // 如果沒有 personalInfo 資料，顯示提示訊息
   if (!personalInfo) {
@@ -68,7 +75,13 @@ export default function HomeAbout({ personalInfo }: HomeAboutProps) {
     <>
       <div className="home_about">
         <div className="size_wrapper">
-          <div className="home_about_info">
+          <motion.div
+            ref={ref}
+            initial={{ opacity: 0, y: 50 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="home_about_info"
+          >
             <div className="home_about_img_frame">
               <Image src="/images/kv-img002.jpg" alt="eddy photo" fill />
               <span className="photo_decoFrame"></span>
@@ -80,7 +93,7 @@ export default function HomeAbout({ personalInfo }: HomeAboutProps) {
                 {content && <PortableText value={content} />}
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </>
