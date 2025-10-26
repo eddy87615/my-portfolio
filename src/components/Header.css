@@ -42,7 +42,13 @@ header {
 
   .header_snsLink {
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 16px;
+
+    img {
+      display: block;
+    }
   }
 }
 

@@ -18,11 +18,17 @@ export default function Header() {
       <header>
         <div className="header_wrapper">
           <div className="header_snsLink">
+            <Link href="/">
+              <Image
+                // className="sns_icon"
+                src="/images/logo-w.svg"
+                width={50}
+                height={50}
+                alt="my logo"
+              />
+            </Link>
             <Link href="https://github.com/eddy87615" target="_blank">
               <FaGithub className="sns_icon" />
-            </Link>
-            <Link href="https://www.instagram.com/e.d.c_0615/" target="_blank">
-              <FaInstagram className="sns_icon" />
             </Link>
             <Link href="mailto:eddychan615@gmail.com" target="_blank">
               <IoMailOutline className="sns_icon" />

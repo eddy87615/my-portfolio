@@ -24,6 +24,10 @@
         min-height: 200px;
         overflow: hidden;
         object-fit: contain;
+
+        img {
+          object-fit: cover;
+        }
       }
 
       .post_tags {

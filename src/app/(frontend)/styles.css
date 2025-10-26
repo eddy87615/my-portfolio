@@ -149,7 +149,7 @@ a {
   color: currentColor;
   text-decoration: none;
 
-  &:focus {
+  &:hover {
     opacity: 0.8;
     outline: none;
   }

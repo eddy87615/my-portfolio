@@ -87,7 +87,7 @@ export const translations = {
       logoTop: "Eddy's Warehouse",
       logoBottom: 'Me and my stuffs',
       home: 'Home',
-      posts: 'My Posts',
+      posts: 'Posts',
     },
     posts: {
       title: 'Posts',

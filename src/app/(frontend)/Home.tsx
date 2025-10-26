@@ -53,6 +53,11 @@ const HomeHeader = function () {
           <p className="kv_title_name">{t.home.content01}</p>
           <p>{t.home.content02}</p>
         </div>
+        <div className="scroll-down">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
     </div>
   )

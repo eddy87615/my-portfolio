@@ -95,7 +95,7 @@ export default function PostsList() {
         let filteredPosts = allPosts || []
         if (selectedTag !== 'all') {
           filteredPosts = filteredPosts.filter((post: Post) =>
-            post.tags?.some((tag) => tag._id === selectedTag)
+            post.tags?.some((tag) => tag._id === selectedTag),
           )
         }
 
@@ -175,6 +175,7 @@ export default function PostsList() {
     <div className="postList_wrapper">
       <div className="postList_top">
         <h1 className="post_title">{t.posts.title}</h1>
+        <p></p>
         <div className="tag">
           <button
             className={`tag_button ${selectedTag === 'all' ? 'active' : ''}`}
