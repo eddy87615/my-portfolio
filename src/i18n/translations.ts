@@ -26,6 +26,8 @@ export const translations = {
       titleAboutMeInfo: '我是陳品叡，來自台灣，目前定居日本的菜鳥前端工程師。',
       titleAboutSkill01: '我會些什麼？',
       titleAboutSkill02: '關於累積至今我會些什麼技能；持續更新中。',
+      titleAboutWorks01: '我做了些什麼？',
+      titleAboutWorks02: '關於累積至今我做了些什麼；持續累積中。',
     },
     profile: {
       zhNameTitle: '姓名',
@@ -66,6 +68,8 @@ export const translations = {
         '私はチェンピンルイです。台湾出身で、今日本に住んでいる素人のフロントエンドエンジニアです。',
       titleAboutSkill01: '私は何ができますか？',
       titleAboutSkill02: '積み上げてきたスキルについてです。更新し続けています。',
+      titleAboutWorks01: '私は何をしましたか？',
+      titleAboutWorks02: '積み上げてきた作品についてです。更新し続けています。',
     },
     profile: {
       zhNameTitle: '名前',
@@ -105,6 +109,8 @@ export const translations = {
       titleAboutMeInfo: 'I am PINJUI CHEN, a newb front-end engineer from Taiwan.',
       titleAboutSkill01: 'What can I do?',
       titleAboutSkill02: "About all the skills I've learned so far; keep updating continually.",
+      titleAboutWorks01: 'What have I done?',
+      titleAboutWorks02: "About all the works I've done so far; keep accumulating.",
     },
     profile: {
       zhNameTitle: 'Name',

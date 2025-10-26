@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useLanguageStore } from '@/store/languageStore'
 import { getPostsByTag } from '@/lib/sanity.queries'
 import { urlFor } from '@/lib/sanity.client'
+import { useTranslation } from '@/i18n/useTranslation'
 import Loading from '../components/Loading'
 
 import './HomeWorks.css'
@@ -37,6 +38,7 @@ export default function HomeWorks() {
   const [mounted, setMounted] = useState(false)
   const [posts, setPosts] = useState<Post[]>([])
   const [loading, setLoading] = useState(false)
+  const t = useTranslation()
 
   // 組件掛載狀態
   useEffect(() => {
@@ -76,37 +78,41 @@ export default function HomeWorks() {
   return (
     <>
       <div className="home_works_section">
-        {loading ? (
-          <Loading />
-        ) : posts?.length > 0 ? (
-          <>
-            <ul className="home_works_posts">
-              {posts.map((post) => (
-                <li key={post._id} className="post_link">
-                  <Link href={`/posts/${post.slug.current}`}>
-                    {post.coverImage && (
-                      <div className="post_cover">
-                        <Image
-                          src={urlFor(post.coverImage).url()}
-                          alt={post.coverImage.alt || post.title}
-                          fill
-                        />
-                      </div>
-                    )}
-                    <ul className="post_tags">
-                      {post.tags?.map((tag) => (
-                        <li key={tag._id}>#{getTagName(tag)}</li>
-                      ))}
-                    </ul>
-                    <h2 className="postLink_title">{post.title}</h2>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </>
-        ) : (
-          <></>
-        )}
+        <div className="size_wrapper">
+          <p className="home_about_title">{t.home.titleAboutWorks01}</p>
+          <p className="home_about_subtitle">{t.home.titleAboutWorks02}</p>
+          {loading ? (
+            <Loading />
+          ) : posts?.length > 0 ? (
+            <>
+              <ul className="home_works_posts">
+                {posts.map((post) => (
+                  <li key={post._id} className="post_link">
+                    <Link href={`/posts/${post.slug.current}`}>
+                      {post.coverImage && (
+                        <div className="post_cover">
+                          <Image
+                            src={urlFor(post.coverImage).url()}
+                            alt={post.coverImage.alt || post.title}
+                            fill
+                          />
+                        </div>
+                      )}
+                      <ul className="post_tags">
+                        {post.tags?.map((tag) => (
+                          <li key={tag._id}>#{getTagName(tag)}</li>
+                        ))}
+                      </ul>
+                      <h2 className="postLink_title">{post.title}</h2>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <></>
+          )}
+        </div>
       </div>
     </>
   )
