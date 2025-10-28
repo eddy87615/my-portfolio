@@ -1,9 +1,13 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useTranslation } from '@/i18n/useTranslation'
+import { useLanguageStore } from '@/store/languageStore'
 import './postCatalog.css'
 
 export default function PostCatalog() {
+  const t = useTranslation()
+  const language = useLanguageStore((state) => state.language)
   const [headings, setHeadings] = useState<
     Array<{
       h2: string
@@ -60,7 +64,7 @@ export default function PostCatalog() {
 
   return (
     <div className="postCatalog">
-      <p className="postCatalog-title">內容目錄</p>
+      <p className="postCatalog-title">{t.posts.postMenu}</p>
       <ul>
         {headings.map((heading, index) => (
           <li key={index} className="catalogH2">

@@ -77,43 +77,47 @@ export default function HomeWorks() {
   }
   return (
     <>
-      <div className="home_works_section">
-        <div className="size_wrapper">
-          <p className="home_about_title">{t.home.titleAboutWorks01}</p>
-          <p className="home_about_subtitle">{t.home.titleAboutWorks02}</p>
-          {loading ? (
-            <Loading />
-          ) : posts?.length > 0 ? (
-            <>
-              <ul className="home_works_posts">
-                {posts.map((post) => (
-                  <li key={post._id} className="post_link">
-                    <Link href={`/posts/${post.slug.current}`}>
-                      {post.coverImage && (
-                        <div className="post_cover">
-                          <Image
-                            src={urlFor(post.coverImage).url()}
-                            alt={post.coverImage.alt || post.title}
-                            fill
-                          />
-                        </div>
-                      )}
-                      <ul className="post_tags">
-                        {post.tags?.map((tag) => (
-                          <li key={tag._id}>#{getTagName(tag)}</li>
-                        ))}
-                      </ul>
-                      <h2 className="postLink_title">{post.title}</h2>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </>
-          ) : (
-            <></>
-          )}
+      {posts?.length > 0 ? (
+        <div className="home_works_section">
+          <div className="size_wrapper">
+            <p className="home_about_title">{t.home.titleAboutWorks01}</p>
+            <p className="home_about_subtitle">{t.home.titleAboutWorks02}</p>
+            {loading ? (
+              <Loading />
+            ) : posts?.length > 0 ? (
+              <>
+                <ul className="home_works_posts">
+                  {posts.map((post) => (
+                    <li key={post._id} className="post_link">
+                      <Link href={`/posts/${post.slug.current}`}>
+                        {post.coverImage && (
+                          <div className="post_cover">
+                            <Image
+                              src={urlFor(post.coverImage).url()}
+                              alt={post.coverImage.alt || post.title}
+                              fill
+                            />
+                          </div>
+                        )}
+                        <ul className="post_tags">
+                          {post.tags?.map((tag) => (
+                            <li key={tag._id}>#{getTagName(tag)}</li>
+                          ))}
+                        </ul>
+                        <h2 className="postLink_title">{post.title}</h2>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : (
+              <></>
+            )}
+          </div>
         </div>
-      </div>
+      ) : (
+        <></>
+      )}
     </>
   )
 }

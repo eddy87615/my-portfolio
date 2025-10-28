@@ -42,7 +42,11 @@ const components = {
               📄 {value.filename}
             </div>
           )}
-          <Highlight theme={themes.vsDark} code={value.code} language={value.language || 'javascript'}>
+          <Highlight
+            theme={themes.vsDark}
+            code={value.code}
+            language={value.language || 'javascript'}
+          >
             {({ className, style, tokens, getLineProps, getTokenProps }) => (
               <pre
                 className={className}
@@ -79,6 +83,41 @@ const components = {
               </pre>
             )}
           </Highlight>
+        </div>
+      )
+    },
+    table: ({ value }: any) => {
+      if (!value?.rows) {
+        return null
+      }
+      return (
+        <div style={{ margin: '2rem 0', overflowX: 'auto' }}>
+          <table
+            style={{
+              width: '100%',
+              borderCollapse: 'collapse',
+              border: '1px solid #ddd',
+            }}
+          >
+            <tbody>
+              {value.rows.map((row: any, rowIndex: number) => (
+                <tr key={rowIndex}>
+                  {row.cells?.map((cell: string, cellIndex: number) => (
+                    <td
+                      key={cellIndex}
+                      style={{
+                        border: '1px solid #ddd',
+                        padding: '4px 8px',
+                        textAlign: 'left',
+                      }}
+                    >
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       )
     },

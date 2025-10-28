@@ -8,6 +8,8 @@ export const translations = {
     },
     posts: {
       title: '文章列表',
+      subtitle:
+        '與其說是文章分享，更像是我自己的作品分享，還有一些我在學習時做的筆記；在學習前端的過程中，我發現有很多觀念不單單只是會做出畫面這麼簡單而已，所以邊搜集資料，將我難以理解，或是覺得重要的事情寫下，不專業紀錄，請多多指教。',
       noPost: '這邊沒有文章 ; A ;',
       allTags: '全部',
       tags: {
@@ -17,6 +19,7 @@ export const translations = {
         'study-notes': '學習筆記',
         'article-share': '文章分享',
       },
+      postMenu: '內容目錄',
     },
     home: {
       title: '嗨！',
@@ -49,6 +52,8 @@ export const translations = {
     },
     posts: {
       title: '記事一覧',
+      subtitle:
+        '記事のシェアというより、自分のプロジェクトや学習ノートの共有に近いです。フロントエンド開発を学ぶ過程で、単に画面を作るだけではなく、もっと深い概念があることに気づきました。そこで、理解しにくかったことや重要だと思ったことを調べながら書き留めています。専門的ではない個人的な記録ですが、よろしくお願いします。',
       noPost: '記事がありません ; A ;',
       allTags: 'すべて',
       tags: {
@@ -58,6 +63,7 @@ export const translations = {
         'study-notes': '学習ノート',
         'article-share': '記事シェア',
       },
+      postMenu: '内容索引',
     },
     home: {
       title: '初めまして！',
@@ -91,6 +97,8 @@ export const translations = {
     },
     posts: {
       title: 'Posts',
+      subtitle:
+        "Rather than just sharing articles, this is more like a collection of my own projects and study notes. While learning front-end development, I've realized there's much more to it than just creating visual interfaces. So I've been gathering information and writing down concepts that I find difficult to understand or consider important. These are casual notes from a learner's perspective - I hope you find them helpful!",
       noPost: 'No posts here ; A ;',
       allTags: 'All',
       tags: {
@@ -100,6 +108,7 @@ export const translations = {
         'study-notes': 'Study Notes',
         'article-share': 'Articles Sharing',
       },
+      postMenu: 'Content Menu',
     },
     home: {
       title: 'Hi there!',

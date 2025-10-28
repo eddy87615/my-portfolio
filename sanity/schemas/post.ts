@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity'
+import { defineField, defineType, defineArrayMember } from 'sanity'
 
 export default defineType({
   name: 'post',
@@ -84,6 +84,11 @@ export default defineType({
             withFilename: true,
           },
         },
+        defineArrayMember({
+          name: 'table',
+          title: '表格',
+          type: 'table',
+        }),
       ],
       validation: (Rule) => Rule.required(),
     }),

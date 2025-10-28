@@ -175,7 +175,7 @@ export default function PostsList() {
     <div className="postList_wrapper">
       <div className="postList_top">
         <h1 className="post_title">{t.posts.title}</h1>
-        <p></p>
+        <p className="post_subtitle">{t.posts.subtitle}</p>
         <div className="tag">
           <button
             className={`tag_button ${selectedTag === 'all' ? 'active' : ''}`}
