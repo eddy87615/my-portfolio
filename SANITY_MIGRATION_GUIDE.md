@@ -161,9 +161,9 @@ my-portfolio/
 
 ## ⚠️ 注意事項
 
-- Supabase 的資料庫資料仍然保留，但網站現在使用 Sanity 的資料
-- 舊的 Payload CMS 相關代碼尚未刪除，建議確認 Sanity 運作正常後再清理
+- ✅ Payload CMS 相關代碼已完全清理
 - 圖片都需要重新上傳到 Sanity
+- 建議使用 Sanity 的圖片 CDN 來優化圖片載入
 
 ---
 
