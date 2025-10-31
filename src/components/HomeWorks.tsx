@@ -45,13 +45,27 @@ export default function HomeWorks() {
     setMounted(true)
   }, [])
 
-  // 載入包含 'my-works' 標籤的文章
+  // 載入包含 'my-works' 標籤的文章，並根據語言過濾
   useEffect(() => {
     async function fetchPosts() {
       setLoading(true)
       try {
         const data = await getPostsByTag('my-works')
-        setPosts(data)
+
+        // 語言對應：zh -> chinese-version, eng -> english-version, jp -> japanese-version
+        const languageMap: { [key: string]: string } = {
+          zh: 'chinese-version',
+          eng: 'english-version',
+          jp: 'japanese-version',
+        }
+        const languageTagSlug = languageMap[language]
+
+        // 過濾出符合當前語言的文章
+        const filteredPosts = data.filter((post: Post) =>
+          post.tags?.some((tag) => tag.slug.current === languageTagSlug)
+        )
+
+        setPosts(filteredPosts)
       } catch (error) {
         console.error('Error loading posts:', error)
       } finally {
@@ -59,7 +73,7 @@ export default function HomeWorks() {
       }
     }
     fetchPosts()
-  }, [])
+  }, [language])
 
   // 根據語言獲取標籤名稱
   const getTagName = (tag: Tag) => {

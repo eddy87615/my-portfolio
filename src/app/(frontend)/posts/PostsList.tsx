@@ -11,6 +11,8 @@ import Loading from '../loading'
 import NoPost from './NoPost'
 
 import './PostList.css'
+import { IoIosArrowBack } from 'react-icons/io'
+import { IoIosArrowForward } from 'react-icons/io'
 
 interface Media {
   id: string | number
@@ -93,9 +95,26 @@ export default function PostsList() {
 
         // 根據標籤篩選
         let filteredPosts = allPosts || []
+
+        // 語言對應：zh -> chinese-version, eng -> english-version, jp -> japanese-version
+        const languageMap: { [key: string]: string } = {
+          zh: 'chinese-version',
+          eng: 'english-version',
+          jp: 'japanese-version',
+        }
+        const languageTagSlug = languageMap[language]
+
         if (selectedTag !== 'all') {
+          // 點擊特定標籤：顯示該標籤的文章，且必須符合當前語言
+          filteredPosts = filteredPosts.filter(
+            (post: Post) =>
+              post.tags?.some((tag) => tag._id === selectedTag) &&
+              post.tags?.some((tag) => tag.slug.current === languageTagSlug),
+          )
+        } else {
+          // 顯示全部文章：只顯示符合當前語言的文章
           filteredPosts = filteredPosts.filter((post: Post) =>
-            post.tags?.some((tag) => tag._id === selectedTag),
+            post.tags?.some((tag) => tag.slug.current === languageTagSlug),
           )
         }
 
@@ -121,7 +140,7 @@ export default function PostsList() {
       }
     }
     fetchPosts()
-  }, [selectedTag, currentPage])
+  }, [selectedTag, currentPage, language])
 
   // 切換標籤時重置到第一頁
   const handleTagChange = (tagId: string | 'all') => {
@@ -227,64 +246,66 @@ export default function PostsList() {
             {/* 分頁控制 */}
             {pagination.totalPages > 1 && (
               <div className="pagination">
-                {/* 上一頁按鈕 */}
-                <button
-                  className="pagination-button"
-                  onClick={() => goToPage(currentPage - 1)}
-                  disabled={!pagination.hasPrevPage}
-                >
-                  ← 上一頁
-                </button>
-
-                {/* 第一頁 */}
-                {getPageNumbers()[0] > 1 && (
-                  <>
-                    <button className="pagination-button" onClick={() => goToPage(1)}>
-                      1
-                    </button>
-                    {getPageNumbers()[0] > 2 && <span className="pagination-ellipsis">...</span>}
-                  </>
-                )}
-
-                {/* 頁碼按鈕 */}
-                {getPageNumbers().map((page) => (
+                <div className="pagination_button">
+                  {/* 上一頁按鈕 */}
                   <button
-                    key={page}
-                    className={`pagination-button ${currentPage === page ? 'active' : ''}`}
-                    onClick={() => goToPage(page)}
+                    className="pagination-button"
+                    onClick={() => goToPage(currentPage - 1)}
+                    disabled={!pagination.hasPrevPage}
                   >
-                    {page}
+                    <IoIosArrowBack />
                   </button>
-                ))}
 
-                {/* 最後一頁 */}
-                {getPageNumbers()[getPageNumbers().length - 1] < pagination.totalPages && (
-                  <>
-                    {getPageNumbers()[getPageNumbers().length - 1] < pagination.totalPages - 1 && (
-                      <span className="pagination-ellipsis">...</span>
-                    )}
+                  {/* 第一頁 */}
+                  {getPageNumbers()[0] > 1 && (
+                    <>
+                      <button className="pagination-button" onClick={() => goToPage(1)}>
+                        1
+                      </button>
+                      {getPageNumbers()[0] > 2 && <span className="pagination-ellipsis">...</span>}
+                    </>
+                  )}
+
+                  {/* 頁碼按鈕 */}
+                  {getPageNumbers().map((page) => (
                     <button
-                      className="pagination-button"
-                      onClick={() => goToPage(pagination.totalPages)}
+                      key={page}
+                      className={`pagination-button ${currentPage === page ? 'active' : ''}`}
+                      onClick={() => goToPage(page)}
                     >
-                      {pagination.totalPages}
+                      {page}
                     </button>
-                  </>
-                )}
+                  ))}
 
-                {/* 下一頁按鈕 */}
-                <button
-                  className="pagination-button"
-                  onClick={() => goToPage(currentPage + 1)}
-                  disabled={!pagination.hasNextPage}
-                >
-                  下一頁 →
-                </button>
+                  {/* 最後一頁 */}
+                  {getPageNumbers()[getPageNumbers().length - 1] < pagination.totalPages && (
+                    <>
+                      {getPageNumbers()[getPageNumbers().length - 1] <
+                        pagination.totalPages - 1 && (
+                        <span className="pagination-ellipsis">...</span>
+                      )}
+                      <button
+                        className="pagination-button"
+                        onClick={() => goToPage(pagination.totalPages)}
+                      >
+                        {pagination.totalPages}
+                      </button>
+                    </>
+                  )}
 
-                {/* 資訊顯示 */}
-                <div className="pagination-info">
-                  第 {currentPage} / {pagination.totalPages} 頁， 共 {pagination.totalDocs} 篇文章
+                  {/* 下一頁按鈕 */}
+                  <button
+                    className="pagination-button"
+                    onClick={() => goToPage(currentPage + 1)}
+                    disabled={!pagination.hasNextPage}
+                  >
+                    <IoIosArrowForward />
+                  </button>
                 </div>
+                {/* 資訊顯示 */}
+                {/* <div className="pagination-info">
+                  第 {currentPage} / {pagination.totalPages} 頁， 共 {pagination.totalDocs} 篇文章
+                </div> */}
               </div>
             )}
           </>

@@ -109,6 +109,40 @@ export default defineType({
             },
           },
         }),
+        defineArrayMember({
+          name: 'gallery',
+          title: '圖片輪播',
+          type: 'object',
+          fields: [
+            {
+              name: 'images',
+              title: 'Images',
+              type: 'array',
+              of: [
+                {
+                  type: 'image',
+                  fields: [
+                    {
+                      name: 'alt',
+                      type: 'string',
+                      title: 'Alternative Text',
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+          preview: {
+            select: {
+              images: 'images',
+            },
+            prepare({ images }) {
+              return {
+                title: `圖片輪播 (${images?.length || 0} 張圖片)`,
+              }
+            },
+          },
+        }),
       ],
       validation: (Rule) => Rule.required(),
     }),
