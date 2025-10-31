@@ -12,20 +12,14 @@ const components = {
         return null
       }
       return (
-        <div className="my-4">
-          <Image
-            src={urlFor(value).url()}
-            alt={value.alt || 'Image'}
-            width={800}
-            height={600}
-            className="rounded-lg"
-          />
+        <div style={{ margin: '16px 0' }}>
+          <Image src={urlFor(value).url()} alt={value.alt || 'Image'} width={800} height={600} />
         </div>
       )
     },
     code: ({ value }: any) => {
       return (
-        <div style={{ margin: '2rem 0' }}>
+        <div style={{ margin: '16px 0' }}>
           {value.filename && (
             <div
               style={{
@@ -34,7 +28,7 @@ const components = {
                 padding: '0.5rem 1rem',
                 borderTopLeftRadius: '0.5rem',
                 borderTopRightRadius: '0.5rem',
-                fontSize: '0.875rem',
+                fontSize: '14px',
                 fontFamily: 'monospace',
                 borderBottom: '1px solid #3e4451',
               }}
@@ -58,7 +52,7 @@ const components = {
                   borderTopRightRadius: value.filename ? 0 : '0.5rem',
                   borderBottomLeftRadius: '0.5rem',
                   borderBottomRightRadius: '0.5rem',
-                  fontSize: '0.875rem',
+                  fontSize: '14px',
                   overflow: 'auto',
                 }}
               >
@@ -120,6 +114,27 @@ const components = {
           </table>
         </div>
       )
+    },
+    hr: () => (
+      <hr
+        style={{
+          margin: '16px 0',
+          border: 'none',
+          borderTop: '1px solid #bcbcbcff',
+        }}
+      />
+    ),
+  },
+  block: {
+    normal: ({ children }: any) => {
+      // 檢查是否為空段落
+      if (
+        !children ||
+        (Array.isArray(children) && children.every((child: any) => child === '' || child === '\n'))
+      ) {
+        return <br />
+      }
+      return <p>{children}</p>
     },
   },
 }

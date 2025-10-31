@@ -89,6 +89,26 @@ export default defineType({
           title: '表格',
           type: 'table',
         }),
+        defineArrayMember({
+          name: 'hr',
+          title: '分隔線',
+          type: 'object',
+          fields: [
+            {
+              name: 'divider',
+              type: 'boolean',
+              hidden: true,
+              initialValue: true,
+            },
+          ],
+          preview: {
+            prepare() {
+              return {
+                title: '━━━━━━━━━━━━━━━',
+              }
+            },
+          },
+        }),
       ],
       validation: (Rule) => Rule.required(),
     }),
