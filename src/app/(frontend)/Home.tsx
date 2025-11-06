@@ -7,6 +7,7 @@ import './Home.css'
 import HomeAbout from '@/components/HomeAbout'
 import HomeSkill from '@/components/HomeSkill'
 import HomeWorks from '@/components/HomeWorks'
+import HomePost from '@/components/HomePost'
 
 interface PersonalInfo {
   _id: string
@@ -104,6 +105,7 @@ export default function HomeContent({ personalInfo, skills }: HomeContentProps) 
       <HomeHeader />
       <HomeAbout personalInfo={personalInfo} />
       <HomeWorks />
+      <HomePost />
       <HomeSkill skills={skills} />
     </div>
   )

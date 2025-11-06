@@ -31,6 +31,8 @@ export const translations = {
       titleAboutSkill02: '關於至今我會些什麼技能；持續更新中。',
       titleAboutWorks01: '我做了些什麼？',
       titleAboutWorks02: '關於至今我做了些什麼；持續累積中。',
+      titleAboutPosts01: '我的文章',
+      titleAboutPosts02: '關於我所寫的文章與筆記；持續更新中。',
     },
     profile: {
       zhNameTitle: '姓名',
@@ -76,6 +78,8 @@ export const translations = {
       titleAboutSkill02: '積み上げてきたスキルについてです。更新し続けています。',
       titleAboutWorks01: '私は何をしましたか？',
       titleAboutWorks02: '積み上げてきた作品についてです。更新し続けています。',
+      titleAboutPosts01: '私の記事',
+      titleAboutPosts02: '私が書いた記事とノートについてです。更新し続けています。',
     },
     profile: {
       zhNameTitle: '名前',
@@ -120,6 +124,8 @@ export const translations = {
       titleAboutSkill02: "About all the skills I've learned so far; keep updating continually.",
       titleAboutWorks01: 'What have I done?',
       titleAboutWorks02: "About all the works I've done so far; keep accumulating.",
+      titleAboutPosts01: 'My Posts',
+      titleAboutPosts02: 'About the articles and notes I have written; keep updating continually.',
     },
     profile: {
       zhNameTitle: 'Name',

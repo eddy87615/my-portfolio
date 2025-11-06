@@ -57,7 +57,7 @@ export default defineType({
         },
         {
           type: 'code',
-          title: 'Code Block',
+          title: '程式碼區塊',
           options: {
             language: 'javascript',
             languageAlternatives: [
