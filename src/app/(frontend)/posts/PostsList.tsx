@@ -222,7 +222,7 @@ export default function PostsList() {
             <ul className="all_posts">
               {posts.map((post) => (
                 <li key={post._id} className="post_link">
-                  <Link href={`/posts/${post.slug.current}`}>
+                  <Link href={`/posts/${post.slug.current}`} className="post_link_link">
                     {post.coverImage && (
                       <div className="post_cover">
                         <Image
