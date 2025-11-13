@@ -62,7 +62,7 @@ export default function HomeWorks() {
 
         // 過濾出符合當前語言的文章
         const filteredPosts = data.filter((post: Post) =>
-          post.tags?.some((tag) => tag.slug.current === languageTagSlug)
+          post.tags?.some((tag) => tag.slug.current === languageTagSlug),
         )
 
         setPosts(filteredPosts)
@@ -103,7 +103,7 @@ export default function HomeWorks() {
                 <ul className="home_works_posts">
                   {posts.map((post) => (
                     <li key={post._id} className="post_link">
-                      <Link href={`/posts/${post.slug.current}`}>
+                      <Link href={`/posts/${post.slug.current}`} className="post_link_link">
                         {post.coverImage && (
                           <div className="post_cover">
                             <Image
