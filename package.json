@@ -28,7 +28,7 @@
     "@sanity/vision": "^4.14.2",
     "cross-env": "^7.0.3",
     "motion": "^12.23.24",
-    "next": "15.4.4",
+    "next": "^16.3.5",
     "next-sanity": "^11.5.7",
     "prism-react-renderer": "^2.4.1",
     "prismjs": "^1.30.0",
